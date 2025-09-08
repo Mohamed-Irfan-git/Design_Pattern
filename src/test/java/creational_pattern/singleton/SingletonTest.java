@@ -40,7 +40,7 @@ public class SingletonTest {
     void testNotNull(){
         try{
             Singleton s1 = Singleton.getInstance();
-            assertNotNull(s1,"Instances are not same");
+            assertNotNull(s1,"Instances can not be null");
         }catch (AssertionError e){
             AllTestPassed = false;
             throw e;
