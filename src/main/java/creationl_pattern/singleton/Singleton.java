@@ -1,21 +1,25 @@
 package creationl_pattern.singleton;
 
-
 /**
-
-*we can do this using 4 ways
-* this method is best
-* call new singleton outside of private  method
-* memory save method there,thread save using synchronized
-* but this handle everything and best practice
-
+ * Singleton Pattern implementation using Bill Pugh approach.
+ * <p>
+ * This method is considered the best practice because:
+ * <ul>
+ *   <li>Lazy initialization (instance created only when needed)</li>
+ *   <li>Thread-safe without requiring synchronized</li>
+ *   <li>Memory efficient</li>
+ * </ul>
  */
-
-
 public class Singleton {
 
+    // private constructor prevents instantiation from outside
     private Singleton() {}
 
+    /**
+     * Inner static helper class responsible for holding
+     * the Singleton instance. Loaded only when getInstance()
+     * is called for the first time.
+     */
     private static class SingletonHolder {
         private static final Singleton INSTANCE = new Singleton();
     }
@@ -25,19 +29,16 @@ public class Singleton {
      *
      * @return Singleton instance (never null)
      */
-
     public static Singleton getInstance() {
-            return  SingletonHolder.INSTANCE;
+        return SingletonHolder.INSTANCE;
     }
 
     /**
-     * Logs a message to console.
+     * Logs a message to the console with instance info.
      *
      * @param message the message to log
      */
-
-    public void log(String message){
-        System.out.println("instance created");
+    public void log(String message) {
+        System.out.println("Instance created: " + message);
     }
-
 }
