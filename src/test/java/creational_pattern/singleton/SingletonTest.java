@@ -11,12 +11,12 @@ public class SingletonTest {
 
     private static boolean AllTestPassed = true;
 
-    @BeforeAll
+    @BeforeAll //  this will run firstly before creating object thats why this kept as a static
     static void initAll(){
         System.out.println("Testing started");
     }
 
-    @BeforeEach
+    @BeforeEach // when start the new testing
     void init(){
         System.out.println("New Testing started");
     }
@@ -67,7 +67,7 @@ public class SingletonTest {
     }
 
 
-    @AfterEach // after every test finished this will run one by one
+    @AfterEach // after every test finished, this will run one by one
     void cleanUp(){
         System.out.println("Test cleanup......");
     }
