@@ -1,0 +1,84 @@
+package creational_pattern.singleton;
+
+
+import creationl_pattern.singleton.Singleton;
+import org.junit.jupiter.api.*;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
+public class SingletonTest {
+
+    private static boolean AllTestPassed = true;
+
+    @BeforeAll
+    static void initAll(){
+        System.out.println("Testing started");
+    }
+
+    @BeforeEach
+    void init(){
+        System.out.println("New Testing started");
+    }
+
+    @Test
+    void testSingleInstance() {
+        try{
+            Singleton s1 = Singleton.getInstance();
+            Singleton s2 = Singleton.getInstance();
+
+            assertSame(s1,s2,"Instances are not same");
+
+        }catch (AssertionError e){
+            AllTestPassed = false;
+            throw e;
+        }
+
+    }
+
+    @Test
+    void testNotNull(){
+        try{
+            Singleton s1 = Singleton.getInstance();
+            assertNotNull(s1,"Instances are not same");
+        }catch (AssertionError e){
+            AllTestPassed = false;
+            throw e;
+        }
+
+    }
+
+    @Test
+    void testMultiThreadedSingleton(){
+       try{
+           final Singleton [] instances = new Singleton[2];
+           Thread t1 = new Thread(()->{instances[0]=Singleton.getInstance();});
+           Thread t2 = new Thread(()->{instances[1]=Singleton.getInstance();});
+
+           t1.start();
+           t2.start();
+
+           assertSame(instances[0],instances[1],"Instances are not same");
+       }catch (AssertionError e){
+           AllTestPassed = false;
+           throw e;
+       }
+
+    }
+
+
+    @AfterEach // after every test finished this will run one by one
+    void cleanUp(){
+        System.out.println("Test cleanup......");
+    }
+
+    @AfterAll // after finished all test this will finally run
+    static void cleanUpAll(){
+       if(AllTestPassed){
+           System.out.println("All test passed");
+       }else{
+           System.out.println("Some test are failed");
+       }
+    }
+
+}
