@@ -16,9 +16,9 @@ package creationl_pattern.factory_method;
  *     no need to create new object rectangle to circle
  *
  *     name is <h1>Factory Method<h1/>
+ *     Factory Method = Delegate creation, return an interface, hide concrete class.
  */
 public class ShapeFactory {
-
 
     /**
      *
@@ -31,7 +31,6 @@ public class ShapeFactory {
         if(shapeType==null){
             return null;
         }
-
 
         switch (shapeType) {
             case "RECTANGLE":
