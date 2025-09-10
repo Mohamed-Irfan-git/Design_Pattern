@@ -1,11 +1,15 @@
 package creationl_pattern.builder_pattern;
 
 /**
- * in this method we're reducing the construction lot of variables
+ * in this method, we're reducing the construction lot of variables
  * which parameter need, and then they can send that one only no need to create construction for
  * evey variable
  *
  * using builder, we can do getter setter method easily it reduce lot of extra codes
+ *
+ * Separates the construction of a complex object
+ * from its representation so the same construction
+ * process can create different representation
  *
  */
 public class Burger {
