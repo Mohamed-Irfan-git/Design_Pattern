@@ -20,6 +20,7 @@ public class Employee implements Prototype {
 
     @Override
     public Prototype clone() {
+        // this keyword point to the private employee
         return new Employee(this);
     }
 
